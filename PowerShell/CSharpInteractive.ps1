@@ -15,4 +15,4 @@ $csiPath = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\MSBuild\ToolsVersions" |
     Select -ExpandProperty MSBuildToolsPath
 
 Set-Location $csiPath
-Invoke-Expression ".\csi.exe $path"
+Invoke-Expression ".\csi.exe ""$path"""
