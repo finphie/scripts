@@ -4,7 +4,10 @@
 # スペース区切りで数値を入力してください。
 # （A B C D）と入力した場合、A*B/100とC*D/100が計算されます。
 
-nums = list(map(int, input().split()))
-value = [l * (1 - r / 100) for l, r in zip(nums[::2], nums[1::2])]
+while True:
+    nums = list(map(int, input().split()))
+    if len(nums) == 0:
+        break
+    value = [l * (1 - r / 100) for l, r in zip(nums[::2], nums[1::2])]
 
-print(value)
+    print(value)
