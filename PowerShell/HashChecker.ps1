@@ -25,25 +25,27 @@ switch ($clipBoard.Length / 2)
     32 { $algorithm = $hashAlgorithm[2] }
     48 { $algorithm = $hashAlgorithm[3] }
     64 { $algorithm = $hashAlgorithm[4] }
-    default 
-    { 
-        foreach ($h in $hashAlgorithm) { & $getFileHash $h }
-        exit
-    }
 }
 
-$hash = & $getFileHash $algorithm
-if ($hash -eq $clipBoard)
+if ($algorithm)
 {
-    "一致"
+    $hash = & $getFileHash $algorithm
+    if ($hash -eq $clipBoard)
+    {
+        "一致"
+    }
+    else
+    {
+        "不一致"
+        "「$path」のハッシュ値"
+        $hash
+        "クリップボード内のハッシュ値"
+        $clipBoard
+    }
 }
 else
 {
-    "不一致"
-    "「$path」のハッシュ値"
-    $hash
-    "クリップボード内のハッシュ値"
-    $clipBoard
+    foreach ($h in $hashAlgorithm) { & $getFileHash $h }
 }
 
 Read-Host
