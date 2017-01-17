@@ -21,7 +21,7 @@ $dir = Split-Path $MyInvocation.MyCommand.Path -parent
 $file = Join-Path $dir $file
 $driveName = $drive + ":"
 
-if (Get-PSDrive | where {$_.Name -eq $drive})
+if (Get-PSDrive | Where-Object {$_.Name -eq $drive})
 {
     net use $driveName /delete
 }
