@@ -7,6 +7,8 @@
     3. もう一度実行すると、割り当てを解除します。
 #>
 
+using namespace System.Management.Automation
+
 # ネットワークフォルダ（\\NAS\Shareなど）
 $path = ""
 # ドライブ名（Zなど）
@@ -28,7 +30,7 @@ if (Get-PSDrive | Where-Object {$_.Name -eq $drive})
 else
 {
     $secure = Get-Content $file | ConvertTo-SecureString
-    $cred = New-Object System.Management.Automation.PSCredential $user,$secure
+    $cred = New-Object PSCredential $user,$secure
 
     New-PSDrive -Persist -Scope "Global" -Name $drive -PSProvider FileSystem -Root $path -Credential $cred
     

@@ -6,8 +6,6 @@
 
 Param($path)
 
-$path = [System.IO.Path]::GetFullPath($path)
-
 $csiPath = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\MSBuild\ToolsVersions" |
     Sort-Object {[double]$_.PSChildName} -Descending |
     Select-Object -First 1 |

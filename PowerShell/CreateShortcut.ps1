@@ -4,6 +4,8 @@
     引数にファイルパスを指定すると、そのファイルのショートカットを作成します。
 #>
 
+using namespace System.Runtime.InteropServices
+
 Param($path)
 
 $name = (Read-Host "ショートカット名") + ".lnk"
@@ -25,4 +27,4 @@ if ($arguments)
 }
 $shortcut.Save()
 
-[Runtime.InteropServices.Marshal]::FinalReleaseComObject($wsh) | Out-Null
+[Marshal]::FinalReleaseComObject($wsh) | Out-Null
